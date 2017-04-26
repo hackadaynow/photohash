@@ -18,13 +18,16 @@ def hashes_are_similar(left_hash, right_hash, tolerance=6):
     """
     return hash_distance(left_hash, right_hash) <= tolerance
 
-
 def average_hash(image_path, hash_size=8):
     """ Compute the average hash of the given image. """
     with open(image_path, 'rb') as f:
-        # Open the image, resize it and convert it to black & white.
-        image = Image.open(f).resize((hash_size, hash_size), Image.ANTIALIAS).convert('L')
-        pixels = list(image.getdata())
+        return average_hash_object(f, hash_size)
+    
+def average_hash_object(file_object, hash_size=8):
+    
+    # Open the image, resize it and convert it to black & white.
+    image = Image.open(file_object).resize((hash_size, hash_size), Image.ANTIALIAS).convert('L')
+    pixels = list(image.getdata())
 
     avg = sum(pixels) / len(pixels)
 
