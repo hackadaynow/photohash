@@ -23,8 +23,12 @@ def average_hash(image_path, hash_size=8):
     with open(image_path, 'rb') as f:
         return average_hash_object(f, hash_size)
     
-def average_hash_object(file_object, hash_size=8):
+def average_hash_url(url, hash_size=8):
+    """ Compute the average hash of the given image url. """
+        return average_hash_object(StringIO(requests.get(url).content), hash_size)
     
+def average_hash_object(file_object, hash_size=8):
+    """ Compute the average hash of the given image file object. """
     # Open the image, resize it and convert it to black & white.
     image = Image.open(file_object).resize((hash_size, hash_size), Image.ANTIALIAS).convert('L')
     pixels = list(image.getdata())
