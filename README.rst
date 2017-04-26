@@ -26,6 +26,13 @@ compares each pixel in the image to the average value of all the pixels.::
 
     import photohash
     hash = photohash.average_hash('/path/to/myimage.jpg')
+    
+average_hash_url
+------------
+Get the remote image from an url then using average_hash to compute the hash of the image. Image is downloaded to memory without writing to disk.
+
+    import photohash
+    hash = photohash.average_hash('/path/to/myimage.jpg')
 
 distance
 --------
