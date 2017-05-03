@@ -2,6 +2,9 @@ from __future__ import division
 
 from PIL import Image
 
+from StringIO import StringIO
+import requests
+
 
 def hash_distance(left_hash, right_hash):
     """Compute the hamming distance between two hashes"""
